@@ -19,7 +19,9 @@
       "@components/*": ["components/*"],
       "@hooks/*": ["hooks/*"],
       "@store/*": ["store/*"],
-      "@utils/*": ["utils/*"]
+      "@utils/*": ["utils/*"],
+      "@interfaces/*": ["types/interfaces/*"],
+      "@enums/*": ["types/enums/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

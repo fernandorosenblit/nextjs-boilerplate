@@ -1,11 +1,17 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { GetStaticPaths, GetStaticProps } from 'next'
+import Head from 'next/head'
 import Image from 'next/image'
 
 const PokemonPage = ({ pokemon }: { pokemon?: any }) => {
   return (
     <div>
-      {pokemon?.name}
+      <Head>
+        <title>SSG Page</title>
+      </Head>
+      <h2>SSG page</h2>
+      <hr />
+      <h3>{pokemon?.name}</h3>
       <Image
         src={pokemon.sprites.front_default}
         alt={`${pokemon.name} image`}

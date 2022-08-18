@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { HYDRATE } from 'next-redux-wrapper'
 
-import { AppState } from '@store/index'
+import { AppState } from '@store/store'
 
 export interface PokemonsState {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.4",
+    "axios": "^0.27.2",
+    "humps": "^2.0.1",
     "next": "12.2.4",
     "next-redux-wrapper": "^7.0.5",
     "react": "18.2.0",
@@ -17,6 +19,7 @@
     "react-redux": "^8.0.2"
   },
   "devDependencies": {
+    "@types/humps": "^2.0.2",
     "@types/node": "18.7.1",
     "@types/react": "18.0.17",
     "@types/react-dom": "18.0.6",
