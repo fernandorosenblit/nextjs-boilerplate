@@ -1,4 +1,5 @@
-import { CognitoHostedUIIdentityProvider, Auth } from '@aws-amplify/auth'
+import { CognitoHostedUIIdentityProvider } from '@aws-amplify/auth'
+import { Auth } from 'aws-amplify'
 
 export const signUp = async (email: string, password: string) => {
   try {
