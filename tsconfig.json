@@ -16,12 +16,14 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@components/*": ["components/*"],
-      "@hooks/*": ["hooks/*"],
-      "@store/*": ["store/*"],
-      "@utils/*": ["utils/*"],
-      "@interfaces/*": ["types/interfaces/*"],
-      "@enums/*": ["types/enums/*"]
+      "api/*": ["api/*"],
+      "components/*": ["components/*"],
+      "hooks/*": ["hooks/*"],
+      "store/*": ["store/*"],
+      "utils/*": ["utils/*"],
+      "types/*": ["types/*"],
+      "lib/*": ["lib/*"],
+      "config/*": ["config/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

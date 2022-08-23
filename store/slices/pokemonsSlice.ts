@@ -1,15 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { HYDRATE } from 'next-redux-wrapper'
 
-import { AppState } from '@store/store'
+import { AppState } from 'store/store'
+import { ApiListItem, ApiPage } from 'types/interfaces'
 
 export interface PokemonsState {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  pokemons: Record<string, any>
+  pokemons: ApiPage<ApiListItem> | null
 }
 
 const initialState: PokemonsState = {
-  pokemons: [],
+  pokemons: null,
 }
 
 export const pokemonsSlice = createSlice({

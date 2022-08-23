@@ -1,9 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import type { GetStaticPaths, GetStaticProps } from 'next'
+import { GetStaticProps, GetStaticPaths } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 
-const PokemonPage = ({ pokemon }: { pokemon?: any }) => {
+import client from 'api/apiClient'
+import { Pokemon } from 'types/interfaces'
+
+const PokemonPage = ({ pokemon }: { pokemon?: Pokemon }) => {
   return (
     <div>
       <Head>
@@ -12,24 +15,23 @@ const PokemonPage = ({ pokemon }: { pokemon?: any }) => {
       <h2>SSG page</h2>
       <hr />
       <h3>{pokemon?.name}</h3>
-      <Image
-        src={pokemon.sprites.front_default}
-        alt={`${pokemon.name} image`}
-        width={100}
-        height={100}
-      />
+      {pokemon?.sprites.frontDefault && (
+        <Image
+          src={pokemon?.sprites.frontDefault}
+          alt={`${pokemon?.name} image`}
+          width={100}
+          height={100}
+        />
+      )}
     </div>
   )
 }
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
   try {
-    const res = await fetch(
-      `https://pokeapi.co/api/v2/pokemon/${ctx.params?.name}`
-    )
-    const pokemon = await res.json()
+    const { data } = await client.get(`${ctx.params?.name}`)
     return {
-      props: { pokemon },
+      props: { pokemon: data },
     }
   } catch (error) {
     console.log(error)
@@ -40,11 +42,8 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const res = await fetch(
-    'https://pokeapi.co/api/v2/pokemon?limit=100&offset=0'
-  )
-  const pokemons = await res.json()
-  const paths = pokemons?.results?.map((pokemon: any) => ({
+  const { data } = await client.get(`?limit=100&offset=0`)
+  const paths = data?.results?.map((pokemon: Pokemon) => ({
     params: { name: pokemon.name },
   }))
 

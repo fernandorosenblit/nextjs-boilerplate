@@ -3,6 +3,8 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 
+import { checkUser, googleSignIn, signOut } from 'lib/auth'
+
 const Home: NextPage = () => {
   return (
     <div>
@@ -16,6 +18,11 @@ const Home: NextPage = () => {
           <Link href="/pokemon/list">Pokemons (SSR page)</Link>
         </li>
       </ul>
+      <div>
+        <button onClick={googleSignIn}>Login with google</button>
+        <button onClick={signOut}>Logout</button>
+        <button onClick={checkUser}>Check user</button>
+      </div>
     </div>
   )
 }
