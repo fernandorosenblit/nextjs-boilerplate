@@ -1,8 +1,27 @@
-import '../styles/globals.css'
+import Amplify, { Hub } from 'aws-amplify'
 import type { AppProps } from 'next/app'
+import { useEffect } from 'react'
 
-function MyApp({ Component, pageProps }: AppProps) {
+import awsConfig from 'config/awsConfig'
+import { wrapper } from 'store/store'
+
+Amplify.configure(awsConfig)
+
+const App = ({ Component, pageProps }: AppProps) => {
+  useEffect(() => {
+    Hub.listen('auth', (data) => {
+      const { payload } = data
+      console.log('A new auth event has happened: ', data)
+      if (payload.event === 'signIn') {
+        console.log('a user has signed in!')
+      }
+      if (payload.event === 'signOut') {
+        console.log('a user has signed out!')
+      }
+    })
+  }, [])
+
   return <Component {...pageProps} />
 }
 
-export default MyApp
+export default wrapper.withRedux(App)
