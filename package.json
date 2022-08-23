@@ -9,7 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@aws-amplify/auth": "^4.6.3",
     "@reduxjs/toolkit": "^1.8.4",
+    "aws-amplify": "^4.3.32",
     "axios": "^0.27.2",
     "humps": "^2.0.1",
     "next": "12.2.4",
