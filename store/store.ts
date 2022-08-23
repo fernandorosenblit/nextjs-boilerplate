@@ -1,7 +1,7 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit'
 import { createWrapper } from 'next-redux-wrapper'
 
-import { pokemonsSlice } from '@store/slices/pokemonsSlice'
+import { pokemonsSlice } from 'store/slices/pokemonsSlice'
 
 const makeStore = () =>
   configureStore({

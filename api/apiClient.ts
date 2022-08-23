@@ -5,11 +5,10 @@ const APPLICATION_JSON = 'application/json'
 const CONTENT_TYPE = 'Content-Type'
 
 const client = axios.create({
-  baseURL: 'https://pokeapi.co/api/v2/pokemon',
+  baseURL: process.env.API_URL,
   headers: {
     Accept: APPLICATION_JSON,
     [CONTENT_TYPE]: APPLICATION_JSON,
-    token: 'Pepe',
   },
 })
 

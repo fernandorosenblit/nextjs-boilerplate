@@ -2,10 +2,10 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { useSelector } from 'react-redux'
 
-import { Pokemon } from '@interfaces/Pokemon'
-import { selectPokemons, setPokemons } from '@store/slices/pokemonsSlice'
-import { wrapper } from '@store/store'
-import client from '@utils/apiClient'
+import client from 'api/apiClient'
+import { selectPokemons, setPokemons } from 'store/slices/pokemonsSlice'
+import { wrapper } from 'store/store'
+import { ApiListItem } from 'types/interfaces'
 
 const PokemonListPage = () => {
   const pokemonsState = useSelector(selectPokemons)
@@ -18,7 +18,7 @@ const PokemonListPage = () => {
       <h2>Pokemons (SSR page)</h2>
       <hr />
       <ul>
-        {pokemonsState.pokemons.results?.map((pokemon: Pokemon) => (
+        {pokemonsState?.pokemons?.results.map((pokemon: ApiListItem) => (
           <li key={pokemon.name}>
             <Link href={`/pokemon/${pokemon.name}`}>{pokemon.name}</Link>
           </li>
