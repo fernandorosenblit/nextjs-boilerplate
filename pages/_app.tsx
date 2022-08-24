@@ -5,6 +5,8 @@ import { useEffect } from 'react'
 import awsConfig from 'config/awsConfig'
 import { wrapper } from 'store/store'
 
+import 'styles/globals.css'
+
 Amplify.configure(awsConfig)
 
 const App = ({ Component, pageProps }: AppProps) => {

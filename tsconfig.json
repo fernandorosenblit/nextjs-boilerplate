@@ -22,7 +22,8 @@
       "utils/*": ["utils/*"],
       "types/*": ["types/*"],
       "lib/*": ["lib/*"],
-      "config/*": ["config/*"]
+      "config/*": ["config/*"],
+      "styles/*": ["styles/*"]
     }
   },
   "include": ["next-env.d.ts", "additional.d.ts", "**/*.ts", "**/*.tsx"],
