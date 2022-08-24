@@ -10,7 +10,7 @@ const Home: NextPage = () => {
       <Head>
         <title>Nextjs Redux boilerplate</title>
       </Head>
-      <h2>Nextjs Redux boilerplate</h2>
+      <h2 className="text-3xl font-bold underline">Nextjs Redux boilerplate</h2>
       <hr />
       <div>
         <button onClick={googleSignIn}>Login with google</button>
