@@ -1,7 +1,7 @@
-- name: Setup sonar scanner
-  uses: warchant/setup-sonar-scanner@v3
+name: Setup sonar scanner
+uses: warchant/setup-sonar-scanner@v3
 
-- name: Run Sonarqube analysis
+name: Run Sonarqube analysis
   run: |
     sonar-scanner \
       -Dsonar.qualitygate.wait=true \
