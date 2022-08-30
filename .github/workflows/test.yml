@@ -5,6 +5,7 @@ jobs:
     name: SonarQube Trigger
     runs-on: ubuntu-latest
     steps:
+      - run: yarn install
       - uses: actions/checkout@master
       - name: Setup sonarqube
         uses: warchant/setup-sonar-scanner@v3
