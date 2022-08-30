@@ -15,3 +15,5 @@ jobs:
           -Dsonar.sources=$GITHUB_WORKSPACE
           -Dsonar.host.url=${{ secrets.SONAR_URL }}
           -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+          -Dsonar.typescript.lcov.reportPaths=coverage/unpress-test/lcov.info
+          -Dsonar.test.inclusions=**/*.spec.ts
