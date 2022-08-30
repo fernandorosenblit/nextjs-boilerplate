@@ -5,7 +5,7 @@ jobs:
     name: SonarQube Trigger
     runs-on: ubuntu-latest
     steps:
-      - run: yarn install
+      - run: yarn
       - uses: actions/checkout@master
       - name: Setup sonarqube
         uses: warchant/setup-sonar-scanner@v3
@@ -15,5 +15,5 @@ jobs:
           -Dsonar.sources=$GITHUB_WORKSPACE
           -Dsonar.host.url=${{ secrets.SONAR_URL }}
           -Dsonar.login=${{ secrets.SONAR_TOKEN }}
-          -Dsonar.typescript.lcov.reportPaths=coverage/unpress-test/lcov.info
+          -Dsonar.language=ts
           -Dsonar.test.inclusions=**/*.spec.ts
