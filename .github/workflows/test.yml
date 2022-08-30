@@ -10,7 +10,6 @@ jobs:
         uses: warchant/setup-sonar-scanner@v3
       - name: Run sonarqube
         run: sonar-scanner
-          -Dsonar.organization=rootstrap
           -Dsonar.projectKey=unpress-test
           -Dsonar.sources=$GITHUB_WORKSPACE
           -Dsonar.host.url=${{ secrets.SONAR_URL }}
