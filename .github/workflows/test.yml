@@ -1,0 +1,37 @@
+on: [push, pull_request]
+name: SonarQube
+jobs:
+  sonarQubeTrigger:
+    name: SonarQube Trigger
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - name: Restore yarn cache
+        uses: actions/cache@v2.0.0
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-build-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-build-yarn-
+
+      - name: Install dependencies
+        run: yarn
+
+      - uses: actions/checkout@master
+      - name: Setup sonarqube
+        uses: warchant/setup-sonar-scanner@v3
+      - name: Run sonarqube
+        run: sonar-scanner
+          -Dsonar.projectKey=unpress-test
+          -Dsonar.sources=$GITHUB_WORKSPACE
+          -Dsonar.host.url=${{ secrets.SONAR_URL }}
+          -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+          -Dsonar.language=ts
+          -Dsonar.test.inclusions=**/*.spec.ts
+          -Dsonar.nodejs.executable=$(which node)
