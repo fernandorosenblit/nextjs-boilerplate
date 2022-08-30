@@ -1,17 +1,17 @@
-name: Setup sonar scanner
-uses: warchant/setup-sonar-scanner@v3
-
-name: Run Sonarqube analysis
-  run:
-    sonar-scanner
-      -Dsonar.qualitygate.wait=true
-      -Dsonar.host.url=https://sonarqube-developers.rootstrap.net
-      -Dsonar.login=${{ secrets.SONAR_TOKEN }}
-      -Dsonar.projectKey=${{ secrets.SONAR_PROJECT }}
-      -Dsonar.scm.provider=git
-      -Dsonar.java.binaries=/tmp
-      -Dsonar.nodejs.executable=$(which node)
-      -Dsonar.projectVersion=$(echo $GITHUB_SHA | cut -c1-8)
-      -Dsonar.sources=.
-      -Dsonar.projectBaseDir=.
-      -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
+on: push
+name: SonarQube
+jobs:
+  sonarQubeTrigger:
+    name: SonarQube Trigger
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Setup sonarqube
+        uses: warchant/setup-sonar-scanner@v3
+      - name: Run sonarqube
+        run: sonar-scanner
+          -Dsonar.organization=1corp
+          -Dsonar.projectKey=unpress-test
+          -Dsonar.sources=$GITHUB_WORKSPACE
+          -Dsonar.host.url=${{ secrets.SONAR_URL }}
+          -Dsonar.login=${{ secrets.SONAR_TOKEN }}
