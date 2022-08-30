@@ -17,3 +17,4 @@ jobs:
           -Dsonar.login=${{ secrets.SONAR_TOKEN }}
           -Dsonar.language=ts
           -Dsonar.test.inclusions=**/*.spec.ts
+          -Dsonar.nodejs.executable=$(which node)
